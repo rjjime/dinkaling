@@ -1,0 +1,25 @@
+# Environment files
+.env
+.env.local
+
+# Deployment configs
+.deploy/config.local.sh
+
+# Dependencies
+node_modules/
+vendor/
+
+# Drupal specific
+sites/*/files/
+sites/*/private/
+sites/*/settings.local.php
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
