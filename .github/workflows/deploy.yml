@@ -50,4 +50,3 @@ jobs:
             .env.local
             sites/*/files/**
             sites/*/private/**
-EOF
