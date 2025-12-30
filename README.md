@@ -2,6 +2,8 @@
 
 A premiere destination for pickleball enthusiasts.
 
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Support-yellow?logo=buy-me-a-coffee)](https://buymeacoffee.com/dinkaling)
+
 This is a static website featuring:
 - Trivia quizzes with tiered certification
 - Video upload and review by site operators
@@ -110,8 +112,11 @@ git checkout dev  # Return to dev
 # Check branch sync status
 ./.deploy/check-sync.sh
 
-# Deploy using helper script (with prompts)
+# Deploy using helper script (pushes to GitHub & GitLab)
 ./.deploy/deploy.sh
+
+# Manually sync all branches to GitLab
+./.deploy/sync-gitlab.sh
 
 # Switch branches safely
 ./.deploy/switch-branch.sh [dev|staging|prod]
@@ -119,6 +124,20 @@ git checkout dev  # Return to dev
 # View deployment guide
 cat .deploy/README.md
 ```
+
+## Repository Locations
+
+This project is maintained on both GitHub and GitLab for redundancy:
+
+- **Primary (GitHub)**: https://github.com/rjjime/dinkaling
+  - GitHub Actions deployment
+  - Primary development repository
+  
+- **Backup (GitLab)**: https://gitlab.com/rjjime/dinkaling
+  - Automatic backup on every push
+  - Redundancy and disaster recovery
+
+The deployment script automatically pushes to both remotes.
 
 ## Deployment Environments
 
@@ -146,6 +165,7 @@ Deployments are automated via GitHub Actions using FTP to ChemiCloud:
 - **Deployment**: GitHub Actions + FTP to ChemiCloud
 - **Hosting**: ChemiCloud shared hosting
 - **Version Control**: Git with 4-branch workflow
+- **Repositories**: GitHub (primary) + GitLab (backup)
 
 ## Features Status
 
@@ -154,6 +174,7 @@ Deployments are automated via GitHub Actions using FTP to ChemiCloud:
 - ✅ Automated deployment pipeline via GitHub Actions
 - ✅ Staging and production environments
 - ✅ Static website structure (HTML/CSS/JS)
+- ✅ GitLab backup repository
 
 ### In Progress
 - 🚧 Quiz system with tiered certification levels
@@ -175,6 +196,7 @@ Deployments are automated via GitHub Actions using FTP to ChemiCloud:
 4. **Check sync status** regularly with `./.deploy/check-sync.sh`
 5. **Monitor deployments** at https://github.com/rjjime/dinkaling/actions
 6. **Keep main in sync** with prod for stable reference
+7. **Automatic GitLab backup** happens on every push via `./.deploy/deploy.sh`
 
 ## File Organization
 
@@ -192,24 +214,46 @@ Deployments are automated via GitHub Actions using FTP to ChemiCloud:
 - `EMOJI_BADGE_IDEAS.md` - Badge system concepts
 - `TODO_CERTIFICATION.md` - Certification feature todos
 
+## Support the Project
+
+Love DinkALing? Help us keep the platform growing!
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/dinkaling)
+
+Your support helps us:
+- 🎾 Develop new features and content
+- 🎥 Create more instructional videos
+- 🎙️ Produce quality podcast episodes
+- 🛠️ Maintain and improve the platform
+- 📚 Build better learning resources
+
+Every contribution, big or small, makes a difference!
+
 ## Troubleshooting
 
 ### Deployment Issues
 - **Deployment fails**: Check GitHub Actions logs at https://github.com/rjjime/dinkaling/actions
 - **Branch out of sync**: Run `./.deploy/check-sync.sh` to identify issues
 - **FTP connection issues**: Verify secrets in GitHub repository settings
+- **GitLab push fails**: Check SSH key is added to GitLab account
 
 ### Local Development
 - **Changes not showing**: Hard refresh browser (Ctrl+Shift+R or Cmd+Shift+R)
 - **CORS errors with local server**: Use `python3 -m http.server` instead of file://
 - **JavaScript not loading**: Check browser console for errors (F12)
 
+### Repository Sync
+- **GitLab out of sync**: Run `./.deploy/sync-gitlab.sh`
+- **Remote not found**: Verify with `git remote -v`
+
 ## Project Links
 
-- **Repository**: https://github.com/rjjime/dinkaling
+- **GitHub Repository**: https://github.com/rjjime/dinkaling
+- **GitLab Repository**: https://gitlab.com/rjjime/dinkaling
 - **Staging Site**: http://staging.dinkaling.com
 - **Production Site**: http://dinkaling.com
 - **Deployment Actions**: https://github.com/rjjime/dinkaling/actions
+- **Support Us**: https://buymeacoffee.com/dinkaling
 
 ## Contributing
 
@@ -224,7 +268,7 @@ Deployments are automated via GitHub Actions using FTP to ChemiCloud:
 ```bash
    git checkout dev
    git merge feature/your-feature-name
-   git push origin dev
+   git push origin dev  # Also pushes to GitLab
 ```
 5. Deploy to staging for testing
 6. Deploy to production when approved
@@ -232,4 +276,6 @@ Deployments are automated via GitHub Actions using FTP to ChemiCloud:
 ---
 
 **Project Type**: Static Website (HTML/CSS/JS)  
-**Last Updated**: December 2024
+**Repositories**: GitHub (primary) + GitLab (backup)  
+**Support**: https://buymeacoffee.com/dinkaling  
+**Last Updated**: December 2025

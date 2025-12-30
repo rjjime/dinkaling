@@ -1,0 +1,191 @@
+/* Floating Pickleball Support Button with Entrance Animation */
+.floating-support-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    width: 85px;
+    height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.3));
+    
+    /* Start off-screen for entrance animation */
+    animation: floatIn 2s ease-out forwards, gentleBob 4s ease-in-out 2s infinite;
+}
+
+/* Pickleball image */
+.floating-support-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+/* Coffee icon overlay - positioned at top-right */
+.floating-support-btn-icon {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 28px;
+    z-index: 2;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    background: rgba(255,255,255,0.95);
+    border: 2px solid #f57f17;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Support text - positioned above */
+.floating-support-btn-text {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2c3e50;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.floating-support-btn:hover .floating-support-btn-text {
+    opacity: 1;
+    top: -55px;
+}
+
+/* Entrance animation - float in from top-right */
+@keyframes floatIn {
+    0% {
+        transform: translate(150px, -150px) rotate(360deg) scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(30px, -30px) rotate(180deg) scale(0.8);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Gentle bobbing after entrance */
+@keyframes gentleBob {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Slow rotation */
+@keyframes slowRotate {
+    0%, 100% {
+        transform: rotate(-3deg);
+    }
+    50% {
+        transform: rotate(3deg);
+    }
+}
+
+/* Subtle glow pulse */
+@keyframes glowPulse {
+    0%, 100% {
+        filter: drop-shadow(0 8px 20px rgba(0,0,0,0.3));
+    }
+    50% {
+        filter: drop-shadow(0 8px 30px rgba(255,235,59,0.6)) drop-shadow(0 0 20px rgba(255,235,59,0.4));
+    }
+}
+
+.floating-support-btn {
+    animation: 
+        floatIn 2s ease-out forwards,
+        gentleBob 5s ease-in-out 2s infinite,
+        slowRotate 7s ease-in-out 2s infinite,
+        glowPulse 4s ease-in-out 2s infinite;
+}
+
+/* Hover effect - pause animations */
+.floating-support-btn:hover {
+    animation: none;
+    transform: scale(1.15) translateY(-8px);
+    filter: drop-shadow(0 12px 35px rgba(255,235,59,0.7)) drop-shadow(0 0 30px rgba(255,235,59,0.5));
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .floating-support-btn {
+        width: 70px;
+        height: 70px;
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .floating-support-btn-icon {
+        font-size: 24px;
+        width: 35px;
+        height: 35px;
+        top: -3px;
+        right: -3px;
+    }
+    
+    .floating-support-btn-text {
+        font-size: 12px;
+        padding: 8px 14px;
+        top: -45px;
+    }
+    
+    @keyframes floatIn {
+        0% {
+            transform: translate(100px, -100px) rotate(360deg) scale(0.3);
+            opacity: 0;
+        }
+        100% {
+            transform: translate(0, 0) rotate(0deg) scale(1);
+            opacity: 1;
+        }
+    }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .floating-support-btn {
+        bottom: 18px;
+        right: 18px;
+        width: 78px;
+        height: 78px;
+    }
+}
+
+/* Accessibility - reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .floating-support-btn {
+        animation: none !important;
+    }
+    
+    @keyframes floatIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+}
