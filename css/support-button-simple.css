@@ -1,0 +1,150 @@
+/* Floating Pickleball Support Button */
+.floating-support-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffeb3b 0%, #fdd835 100%);
+    border: 3px solid #f57f17;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: visible;
+}
+
+/* Pickleball holes pattern */
+.floating-support-btn::before,
+.floating-support-btn::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #f57f17;
+    border-radius: 50%;
+}
+
+.floating-support-btn::before {
+    top: 15px;
+    left: 15px;
+    box-shadow: 
+        38px 0 0 #f57f17,
+        19px 15px 0 #f57f17,
+        0 30px 0 #f57f17,
+        38px 30px 0 #f57f17,
+        19px 45px 0 #f57f17;
+}
+
+/* Support text inside ball */
+.floating-support-btn-text {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.floating-support-btn:hover .floating-support-btn-text {
+    opacity: 1;
+}
+
+/* Coffee icon in center */
+.floating-support-btn-icon {
+    font-size: 28px;
+    z-index: 1;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
+}
+
+/* Gentle bounce animation - slowed down */
+@keyframes gentleBounce {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-8px) rotate(5deg);
+    }
+    50% {
+        transform: translateY(0) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-4px) rotate(-5deg);
+    }
+}
+
+.floating-support-btn {
+    animation: gentleBounce 4s ease-in-out infinite;
+}
+
+/* Hover effect */
+.floating-support-btn:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 8px 25px rgba(255,235,59,0.5);
+    animation: none; /* Stop bounce on hover */
+}
+
+/* Subtle glow pulse - very slow */
+@keyframes slowGlow {
+    0%, 100% {
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    50% {
+        box-shadow: 0 6px 30px rgba(255,235,59,0.6);
+    }
+}
+
+.floating-support-btn {
+    animation: gentleBounce 4s ease-in-out infinite, slowGlow 5s ease-in-out infinite;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .floating-support-btn {
+        width: 65px;
+        height: 65px;
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .floating-support-btn::before {
+        width: 10px;
+        height: 10px;
+        top: 12px;
+        left: 12px;
+    }
+    
+    .floating-support-btn::before {
+        box-shadow: 
+            31px 0 0 #f57f17,
+            15px 12px 0 #f57f17,
+            0 24px 0 #f57f17,
+            31px 24px 0 #f57f17,
+            15px 36px 0 #f57f17;
+    }
+    
+    .floating-support-btn-icon {
+        font-size: 24px;
+    }
+}
+
+/* Accessibility - reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .floating-support-btn {
+        animation: none;
+    }
+}

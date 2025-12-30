@@ -1,0 +1,165 @@
+/* Ultra-realistic Floating Pickleball Support Button */
+.floating-support-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff59d, #ffeb3b 40%, #fdd835 70%, #f9a825);
+    border: 4px solid #f57f17;
+    box-shadow: 
+        0 8px 25px rgba(0,0,0,0.3),
+        inset -5px -5px 10px rgba(0,0,0,0.1),
+        inset 5px 5px 10px rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: visible;
+}
+
+/* Realistic pickleball hole pattern - 26 holes */
+.floating-support-btn::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-image: 
+        /* Center row */
+        radial-gradient(circle at 20% 50%, #f57f17 10%, transparent 11%),
+        radial-gradient(circle at 35% 50%, #f57f17 10%, transparent 11%),
+        radial-gradient(circle at 50% 50%, #f57f17 10%, transparent 11%),
+        radial-gradient(circle at 65% 50%, #f57f17 10%, transparent 11%),
+        radial-gradient(circle at 80% 50%, #f57f17 10%, transparent 11%),
+        /* Upper rows */
+        radial-gradient(circle at 27% 35%, #f57f17 10%, transparent 11%),
+        radial-gradient(circle at 42% 35%, #f57f17 10%, transparent 11%),
+        radial-gradient(circle at 57% 35%, #f57f17 10%, transparent 11%),
+        radial-gradient(circle at 72% 35%, #f57f17 10%, transparent 11%),
+        radial-gradient(circle at 35% 20%, #f57f17 10%, transparent 11%),
+        radial-gradient(circle at 50% 20%, #f57f17 10%, transparent 11%),
+        radial-gradient(circle at 65% 20%, #f57f17 10%, transparent 11%),
+        /* Lower rows */
+        radial-gradient(circle at 27% 65%, #f57f17 10%, transparent 11%),
+        radial-gradient(circle at 42% 65%, #f57f17 10%, transparent 11%),
+        radial-gradient(circle at 57% 65%, #f57f17 10%, transparent 11%),
+        radial-gradient(circle at 72% 65%, #f57f17 10%, transparent 11%),
+        radial-gradient(circle at 35% 80%, #f57f17 10%, transparent 11%),
+        radial-gradient(circle at 50% 80%, #f57f17 10%, transparent 11%),
+        radial-gradient(circle at 65% 80%, #f57f17 10%, transparent 11%);
+}
+
+/* Coffee icon in center */
+.floating-support-btn-icon {
+    font-size: 32px;
+    z-index: 2;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.4));
+    position: relative;
+}
+
+/* Support text label */
+.floating-support-btn-text {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.85);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.floating-support-btn:hover .floating-support-btn-text {
+    opacity: 1;
+}
+
+/* Very gentle bounce - slow and smooth */
+@keyframes gentleBounce {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    20% {
+        transform: translateY(-6px) rotate(3deg);
+    }
+    40% {
+        transform: translateY(0) rotate(0deg);
+    }
+    60% {
+        transform: translateY(-3px) rotate(-3deg);
+    }
+    80% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+/* Slow subtle glow */
+@keyframes slowGlow {
+    0%, 100% {
+        box-shadow: 
+            0 8px 25px rgba(0,0,0,0.3),
+            inset -5px -5px 10px rgba(0,0,0,0.1),
+            inset 5px 5px 10px rgba(255,255,255,0.4);
+    }
+    50% {
+        box-shadow: 
+            0 8px 35px rgba(255,235,59,0.5),
+            inset -5px -5px 10px rgba(0,0,0,0.1),
+            inset 5px 5px 10px rgba(255,255,255,0.4);
+    }
+}
+
+.floating-support-btn {
+    animation: 
+        gentleBounce 5s ease-in-out infinite,
+        slowGlow 6s ease-in-out infinite;
+}
+
+/* Hover effect - stops animation */
+.floating-support-btn:hover {
+    transform: scale(1.15) translateY(-8px);
+    box-shadow: 
+        0 12px 35px rgba(255,235,59,0.6),
+        inset -5px -5px 10px rgba(0,0,0,0.1),
+        inset 5px 5px 10px rgba(255,255,255,0.4);
+    animation: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .floating-support-btn {
+        width: 70px;
+        height: 70px;
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .floating-support-btn-icon {
+        font-size: 26px;
+    }
+    
+    .floating-support-btn-text {
+        font-size: 11px;
+        padding: 6px 12px;
+        bottom: -35px;
+    }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .floating-support-btn {
+        animation: none;
+    }
+}
