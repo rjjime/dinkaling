@@ -955,7 +955,7 @@ body {
 
 
 /* Enhanced logo styling */
-.logo {
+/*.logo {
     filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
     transition: transform 0.3s ease, filter 0.3s ease;
 }
@@ -964,3 +964,21 @@ body {
     transform: scale(1.05);
     filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
 }
+*/
+
+
+/* Enhanced logo styling */
+.dinkaling-bmc-logo {
+    width: 96px;
+    transition: filter 0.3s ease-out, transform 0.2s ease-out;
+  }
+  
+  .dinkaling-bmc-logo:hover {
+    filter: drop-shadow(0 0 8px rgba(247, 201, 72, 0.5));
+  }
+  
+  .dinkaling-bmc-logo:active {
+    filter: drop-shadow(0 0 12px rgba(247, 201, 72, 0.65));
+    transform: scale(0.98);
+  }
+  
